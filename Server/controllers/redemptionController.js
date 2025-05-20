@@ -3,6 +3,7 @@ import Redemption from '../models/redemptionModel.js';
 import Award from '../models/awardModel.js';
 import Point from '../models/pointModel.js';
 import { customAlphabet } from 'nanoid';
+import History from '../models/historyModel.js';
 
 // Generar código único para el canje
 const generateUniqueCode = async () => {
@@ -160,10 +161,6 @@ const validateRedemption = async (req, res) => {
       return res.status(400).json({ msg: 'Este canje ya fue utilizado' });
     }
 
-    // Cambiar estado a usado
-    redemption.status = 'used';
-    await redemption.save();
-
     // Obtener detalles del premio
     const award = await Award.findById(redemption.awardId);
 
@@ -171,8 +168,20 @@ const validateRedemption = async (req, res) => {
       return res.status(404).json({ msg: 'Premio asociado no encontrado' });
     }
 
+    // Crear registro de historial
+    const newHistory = new History({
+      userId: redemption.userId,
+      awardId: redemption.awardId,
+      brandId: redemption.brandId,
+    });
+
+    await newHistory.save();
+
+    // Eliminar el canje
+    await Redemption.deleteOne({ _id: redemption._id });
+
     return res.status(200).json({
-      msg: 'Canje validado correctamente',
+      msg: 'Canje validado y registrado correctamente en el historial',
       award: {
         name: award.name,
         description: award.description,

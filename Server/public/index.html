@@ -223,6 +223,81 @@
       </div>
     </section>
 
+    <section>
+      <h2>Favorites</h2>
+
+      <div class="endpoint">
+        <div class="endpoint-title">GET /api/favorites</div>
+        <div class="description">Obtiene una lista de todos los favoritos.</div>
+      </div>
+      <div class="endpoint">
+        <div class="endpoint-title">GET /api/favorites/user</div>
+        <div class="description">Obtiene una lista de todos los favoritos del usuario logueado.</div>
+      </div>
+      <div class="endpoint">
+        <div class="endpoint-title">GET /api/favorites/brand</div>
+        <div class="description">Obtiene una lista de todos los favoritos del comercio logueado.</div>
+      </div>
+      
+      <div class="endpoint">
+        <div class="endpoint-title">POST /api/favorites</div>
+        <div class="description">Crea un favorito.</div>
+        <pre><code>{
+  <span class="key">"BrandId"</span>: <span class="string">"681684561748e634b6ac88c2"</span>,
+}</code></pre>
+      </div>
+
+      <div class="endpoint">
+        <div class="endpoint-title">DELETE /api/favorites/:id</div>
+        <div class="description">Elimina un favorito.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>History</h2>
+      <div class="endpoint">
+        <div class="endpoint-title">GET /api/histories</div>
+        <div class="description">Obtiene una lista de todo el historial.</div>
+      </div>
+      <div class="endpoint">
+        <div class="endpoint-title">GET /api/histories/user/:userId</div>
+        <div class="description">Obtiene una lista de todo el historial del usuario.</div>
+      </div>
+      <div class="endpoint">
+        <div class="endpoint-title">GET /api/histories/brand/:brandId</div>
+        <div class="description">Obtiene una lista de todo el historial del comercio.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Events</h2>
+      <div class="endpoint">
+        <div class="endpoint-title">GET /api/events</div>
+        <div class="description">Obtiene una lista de todos los eventos.</div>
+      </div>
+      <div class="endpoint">
+        <div class="endpoint-title">GET /api/events/:id</div>
+        <div class="description">Obtiene un evento por ID.</div>
+      </div>
+      <div class="endpoint">
+        <div class="endpoint-title">GET /api/events/brand/:brandId</div>
+        <div class="description">Obtiene una lista de todos los eventos por comercio.</div>
+      </div>
+
+      <div class="endpoint">
+        <div class="endpoint-title">POST /api/events</div>
+        <div class="description">Crea un evento.</div>
+        <pre><code>{
+  <span class="key">"title"</span>: <span class="string">"Dia del Cafe!"</span>,
+  <span class="key">"description"</span>: <span class="string">"Vení a disfrutar en el día del Cafe!"</span>,
+  <span class="key">"location"</span>: <span class="string">"Corrientes 2200"</span>,
+  <span class="key">"hours"</span>: <span class="string">"18:00"</span>,
+  <span class="key">"startDate"</span>: <span class="string">"10/06/2025"</span>,
+  <span class="key">"endDate"</span>: <span class="string">"12/06/2025"</span>
+}</code></pre>
+      </div>
+    </section>
+
   </div>
 </body>
 </html>
